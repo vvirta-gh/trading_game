@@ -3,5 +3,9 @@
         "open-pages": [
             "pinyfakepage.html"
         ]
-    }
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.extraPaths": [
+        "app"
+    ]
 }

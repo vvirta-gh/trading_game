@@ -16,27 +16,31 @@ def run_tests():
 
 def run_stock_tests():
     """Run stock tests with output"""
-    result = subprocess.run([sys.executable, "-m", "pytest", "tests/test_stock.py", "-v", "-s"], cwd=".")
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", "tests/test_stock.py", "-v", "-s"], cwd="."
+    )
     return result.returncode
 
 
 def run_player_tests():
     """Run player tests"""
-    result = subprocess.run([sys.executable, "-m", "pytest", "tests/test_player.py", "-v", "-s"], cwd=".")
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", "tests/test_player.py", "-v", "-s"], cwd="."
+    )
     return result.returncode
 
 
 def demo_stock():
     """Demo stock price changes"""
     print("=== Stock Price Demo ===")
-    s = Stock('Tesla', 'TSLA', 100.0, 1000)
-    print(f'Initial: {s}')
-    
-    print(f'After buying 10 shares: {s.buy(10):.2f}')
-    print(f'After buying 50 shares: {s.buy(50):.2f}')
-    print(f'After buying 100 shares: {s.buy(100):.2f}')
-    
-    print(f'Final: {s}')
+    s = Stock("Tesla", "TSLA", 100.0, 1000)
+    print(f"Initial: {s}")
+
+    print(f"After buying 10 shares: {s.buy(10):.2f}")
+    print(f"After buying 50 shares: {s.buy(50):.2f}")
+    print(f"After buying 100 shares: {s.buy(100):.2f}")
+
+    print(f"Final: {s}")
     return 0
 
 
