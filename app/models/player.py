@@ -1,5 +1,5 @@
 from typing import List
-from models.stock import Stock
+from app.models.stock import Stock 
 from loguru import logger
 
 
@@ -20,6 +20,10 @@ class Player:
         self.portfolio.append(stock)
         logger.info(f"Player {self.name} has {self.portfolio} in portfolio.")
         return self.balance, self.portfolio
+
+    
+    def get_name(self):
+        return self.name
 
 
 if __name__ == "__main__":
