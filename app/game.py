@@ -44,12 +44,10 @@ class Game:
                     break
             else:
                 self.console.print(
-                    f"[red bold]{Emojis.ERROR} Invalid choice!n[/red bold]")
+                    f"[red bold]{Emojis.ERROR} Invalid choice!\n[/red bold]")
 
     def show_main_menu(self):
         """Näytä päävalikko Rich-kirjastolla tyyliteltynä"""
-
-        console = Console()
 
         menu_text = (
             f"[bold blue]{Emojis.CHART_UP} Trading Game {Emojis.CHART_DOWN}[/bold blue]\n"
@@ -61,7 +59,7 @@ class Game:
             "5. Exit"
         )
 
-        console.print(Panel.fit(menu_text, title="Main Menu"))
+        self.console.print(Panel.fit(menu_text, title="Main Menu"))
 
         choice = Prompt.ask(
             "Choose an option:",
@@ -96,24 +94,24 @@ class Game:
         logger.debug(f"Created player: {self.player.get_name()}")
         return self.player
 
-    def start_new_game(self):  # ✅ OIKEIN - luokan sisällä
+    def start_new_game(self):
         """Aloita uusi peli"""
         player_name = Prompt.ask("Enter your name: ", default="Trader Joe")
         self._create_player(player_name)
         self.console.print(f"Welcome {player_name}! Let's start the game!")
 
-        self.play_trading_rounds()  # ✅ Lisää sulut!
+        self.play_trading_rounds()
 
     def play_trading_rounds(self):
         self.console.print(f"Playing {self.max_rounds} trading rounds")
         self.console.print(f"Stocks: {self.stocks}")
         self.console.print(f"Balance: {self.player.balance}")
 
-    def show_portfolio(self):  # ✅ Oikea indentointi
+    def show_portfolio(self):
         """Näytä portfolio"""
         pass
 
-    def show_leaderboard(self):  # ✅ Oikea indentointi
+    def show_leaderboard(self):
         """Näytä leaderboard"""
         pass
 
@@ -121,7 +119,7 @@ class Game:
         """Näytä asetukset"""
         pass
 
-    def exit_game(self):  # ✅ Oikea indentointi
+    def exit_game(self):
         """Lopeta peli"""
         return "exit"
 

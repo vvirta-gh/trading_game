@@ -30,4 +30,4 @@ STOCK_CONFIG = {
 # 'market_impact': 0.2, 'scarcity_factor': 0.1, 'log_factor': 0.1, 'volatility': 0.6
 #
 # TASAPAINOINEN (kaikki tekijät yhtä tärkeitä):
-# 'market_impact': 0.25, 'scarc:qity_factor': 0.25, 'log_factor': 0.25, 'volatility': 0.25
+# 'market_impact': 0.25, 'scarcity_factor': 0.25, 'log_factor': 0.25, 'volatility': 0.25
