@@ -11,6 +11,8 @@ dependencies = [
     "pandas>=2.3.2",
     "pytest>=8.4.2",
     "pytest-cov>=6.0.0",
+    "pytest-html>=4.1.1",
+    "pytest-xdist>=3.8.0",
     "rich>=14.1.0",
 ]
 
@@ -21,6 +23,16 @@ test-stock = "app.scripts:run_stock_tests"
 test-player = "app.scripts:run_player_tests"
 demo-stock = "app.scripts:demo_stock"
 demo-game ="app.game:run_game"
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-html>=4.0.0",  # HTML-raportit
+    "pytest-xdist>=3.0.0",  # Rinnakkaistestaus
+    "pytest-mock>=3.10.0",  # Mock-objektit
+    "pytest-clarity>=1.0.0",  # Paremmat virheilmoitukset
+]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
