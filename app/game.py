@@ -1,6 +1,7 @@
 from app.models.stock import Stock
 from app.models.player import Player
 from app.utils.constants import Emojis
+from app.ui.game_interface import GameInterface
 
 import random
 from loguru import logger
@@ -21,6 +22,7 @@ class Game:
         self.max_rounds = 10
         self.leaderboard = []   # tallentaa pelitulokset statistiikaksi
         self.console = Console()
+        self.game_interface = GameInterface()
 
     def run_game(self):
         """Pääpelisilmukka"""
@@ -96,13 +98,16 @@ class Game:
         logger.debug(f"Created player: {self.player.get_name()}")
         return self.player
 
-    def start_new_game(self):  # ✅ OIKEIN - luokan sisällä
+    def start_new_game(self):
         """Aloita uusi peli"""
         player_name = Prompt.ask("Enter your name: ", default="Trader Joe")
         self._create_player(player_name)
         self.console.print(f"Welcome {player_name}! Let's start the game!")
-
-        self.play_trading_rounds()  # ✅ Lisää sulut!
+        
+        # Käynnistä pelin käyttöliittymä
+        result = self.game_interface.show_game_interface(self.player, self.stocks)
+        if result == "exit":
+            return
 
     def play_trading_rounds(self):
         self.console.print(f"Playing {self.max_rounds} trading rounds")

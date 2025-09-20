@@ -3,6 +3,8 @@ Constants for the trading game application.
 Contains emojis and other game constants.
 """
 
+from app.models.stock import Stock
+
 
 class Emojis:
     """Emoji constants for the trading game UI"""
@@ -50,7 +52,6 @@ class Emojis:
 
 class GameConstants:
     """Game configuration constants"""
-
     # Game settings
     DEFAULT_BALANCE = 1000.0
     MAX_ROUNDS = 10
@@ -67,3 +68,4 @@ class GameConstants:
         {"name": "Fortum Oyj", "symbol": "FORTUM"},
         {"name": "Neste Oyj", "symbol": "NESTE"},
     ]
+
