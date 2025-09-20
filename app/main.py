@@ -1,5 +1,7 @@
 from loguru import logger
 from random import random
+from app.ui.game_interface import GameInterface
+from app.game import Game
 
 
 def generate_random_number():
@@ -7,8 +9,8 @@ def generate_random_number():
 
 
 def main():
-    logger.info(f"Random number: {generate_random_number()}")
-
+    game = Game()
+    game.run_game()
 
 if __name__ == "__main__":
     main()
