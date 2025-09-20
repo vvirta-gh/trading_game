@@ -1,19 +1,14 @@
 [project]
 name = "trading-game"
 version = "0.1.0"
-description = "Add your description here"
+description = "A trading game"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.8"
 dependencies = [
-    "black>=25.1.0",
-    "docker>=7.1.0",
-    "loguru>=0.7.3",
-    "pandas>=2.3.2",
-    "pytest>=8.4.2",
-    "pytest-cov>=6.0.0",
-    "pytest-html>=4.1.1",
-    "pytest-xdist>=3.8.0",
-    "rich>=14.1.0",
+    "rich>=13.0.0",
+    "loguru>=0.7.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
 ]
 
 [project.scripts]
@@ -37,4 +32,8 @@ test = [
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["test_reports*", "tests*"]
 

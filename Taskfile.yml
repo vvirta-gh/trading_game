@@ -1,0 +1,73 @@
+version: 3
+
+env:
+  REPORT: "false"  # true/false - tuottaako raportin
+  REPORT_TYPE: "html"  # html, json, xml, none - minkä tyyppinen raportti
+
+tasks:
+  test:
+    desc: "Run all tests"
+    cmds:
+      - |
+        if [ "{{.REPORT}}" = "true" ]; then
+          mkdir -p test_reports
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          if [ "{{.REPORT_TYPE}}" = "html" ]; then
+            uv run pytest tests/ --html=test_reports/test_report_${TIMESTAMP}.html --self-contained-html --cov=app --cov-report=html:test_reports/coverage_${TIMESTAMP} -v
+          elif [ "{{.REPORT_TYPE}}" = "json" ]; then
+            uv run pytest tests/ --json-report --json-report-file=test_reports/test_report_${TIMESTAMP}.json --cov=app -v
+          elif [ "{{.REPORT_TYPE}}" = "xml" ]; then
+            uv run pytest tests/ --junitxml=test_reports/test_report_${TIMESTAMP}.xml --cov=app -v
+          else
+            uv run pytest tests/ --cov=app -v
+          fi
+        else
+          uv run pytest tests/ -v
+        fi
+    
+  test-stock:
+    desc: "Run stock tests only"
+    cmds:
+      - |
+        if [ "{{.REPORT}}" = "true" ]; then
+          mkdir -p test_reports
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          if [ "{{.REPORT_TYPE}}" = "html" ]; then
+            uv run pytest tests/test_stock.py --html=test_reports/test_stock_${TIMESTAMP}.html --self-contained-html --cov=app --cov-report=html:test_reports/coverage_stock_${TIMESTAMP} -v -s
+          elif [ "{{.REPORT_TYPE}}" = "json" ]; then
+            uv run pytest tests/test_stock.py --json-report --json-report-file=test_reports/test_stock_${TIMESTAMP}.json --cov=app -v -s
+          elif [ "{{.REPORT_TYPE}}" = "xml" ]; then
+            uv run pytest tests/test_stock.py --junitxml=test_reports/test_stock_${TIMESTAMP}.xml --cov=app -v -s
+          else
+            uv run pytest tests/test_stock.py --cov=app -v -s
+          fi
+        else
+          uv run pytest tests/test_stock.py -v -s
+        fi
+
+  test-player:
+    desc: "Run player tests only"
+    cmds:
+      - |
+        if [ "{{.REPORT}}" = "true" ]; then
+          mkdir -p test_reports
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          if [ "{{.REPORT_TYPE}}" = "html" ]; then
+            uv run pytest tests/test_player.py --html=test_reports/test_player_${TIMESTAMP}.html --self-contained-html --cov=app --cov-report=html:test_reports/coverage_player_${TIMESTAMP} -v -s
+          elif [ "{{.REPORT_TYPE}}" = "json" ]; then
+            uv run pytest tests/test_player.py --json-report --json-report-file=test_reports/test_player_${TIMESTAMP}.json --cov=app -v -s
+          elif [ "{{.REPORT_TYPE}}" = "xml" ]; then
+            uv run pytest tests/test_player.py --junitxml=test_reports/test_player_${TIMESTAMP}.xml --cov=app -v -s
+          else
+            uv run pytest tests/test_player.py --cov=app -v -s
+          fi
+        else
+          uv run pytest tests/test_player.py -v -s
+        fi
+
+  clean:
+    desc: "Clean test reports and cache"
+    cmds:
+      - rm -rf test_reports/
+      - rm -rf .pytest_cache/
+      - rm -rf htmlcov/
