@@ -13,3 +13,6 @@ wheels/
 test_reports/
 .coverage
 .test-reports/
+
+# IDE files
+.cursor

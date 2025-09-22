@@ -3,7 +3,7 @@ name = "trading-game"
 version = "0.1.0"
 description = "A trading game"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.13"
 dependencies = [
     "rich>=13.0.0",
     "loguru>=0.7.0",
