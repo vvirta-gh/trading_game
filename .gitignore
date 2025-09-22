@@ -9,3 +9,7 @@ wheels/
 # Virtual environments
 .venv
 
+# Test reports and coverage
+test_reports/
+.coverage
+.test-reports/
